@@ -1,0 +1,29 @@
+Components, Severity 1, Severity 2, Severity 2, Severity 3, Severity 4, Severity 5
+Builds,0,0,0,0,0
+OST,0,4,3,4,0
+Control Plane,0,2,1,2,1
+DMA Compatibility,0,0,0,0,0
+ODIV,0,0,0,1,0
+CIFS,0,5,0,0,1
+CLI,0,0,3,0,3
+Perc Controller,0,0,0,0,0
+OFS,0,1,0,1,0
+NDMP,0,0,0,0,0
+Networking,0,0,0,2,0
+Supportability,0,0,1,1,3
+Factory,0,0,0,0,0
+GUI,0,1,7,2,2
+NACKFS,0,0,0,0,0
+SNMP,0,0,0,0,0
+Hardware,0,0,0,0,0
+OFSCK,0,2,0,1,0
+Documentation,0,0,0,0,0
+NFS,0,1,0,0,0
+Disaster Recovery,0,0,0,0,0
+EGRESS,0,0,0,0,0
+Marvell,0,0,0,0,0
+Unspecified,0,0,0,0,0
+Replication,1,0,1,0,0
+CHOAM,0,5,1,1,2
+O3E,0,3,0,2,0
+ASMF,0,0,0,0,0

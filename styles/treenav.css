@@ -1,0 +1,83 @@
+/* 
+ * Copyright (c) 2010 by Dell Inc.  
+ * All rights reserved. This software may not be copied, disclosed, 
+ * transferred or used except in accordance with a license granted by 
+ * Ocarina Networks.  (http://www.ocarinanetworks.com) This software embodies 
+ * proprietary information and trade secrets of Ocarina Networks
+ */
+
+div#treenav
+{
+/*	
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #292c31;
+	margin: 0px 0px 0px 9px;
+*/
+	background-color: #000;
+	width:186px;
+}
+div#treenav a
+{
+	text-decoration:none;
+	font-family: arial, verdana, sans-serif;
+	color:#FFF;
+	font-size: 12px;
+	line-height: 18px;
+	outline:none;
+}
+div#treenav a:hover
+{
+	color:#71b6f8;
+}
+
+
+div#treenav IMG
+{
+	border: none;
+	vertical-align:middle;
+	margin:0px auto;
+}
+div#treenav TABLE
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+div#treenav TABLE TD
+{
+	height:18px;
+	padding:0px;
+	white-space:nowrap;
+}
+div#treenav TR.component-tree-selection
+{
+	background-color: #D5E7F8;
+}
+div#treenav TR.component-tree-selection A
+{
+	color:#000;
+	font-weight:bold;
+}
+div#treenav TR.component-tree-selection A:hover
+{
+	color:#71b6f8;
+}
+div#treenav TR.component-tree-disabled A
+{
+	color:#999;
+	cursor:default;
+}
+div#treenav SPAN.icon
+{
+	background: transparent url('../images/tree_nav/icon.gif') repeat-x scroll center center;
+	padding: 0px 3px;
+	margin-right:2px;
+}
+div#treenav SPAN.iconselected
+{
+	background: transparent url('../images/tree_nav/iconselected.gif') repeat-x scroll center center;
+	padding: 0px 3px;
+	margin-right:2px;
+}
+
+

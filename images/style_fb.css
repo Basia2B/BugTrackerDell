@@ -1,0 +1,94 @@
+/* formbuilder styles */
+
+INPUT, INPUT.fb_input {
+    border:             1px solid #000000;
+    color:              #000000;
+    font-style:         normal;
+    font-weight:        normal;
+    font-size:          10px;
+    background-color:   #9CE174
+}
+
+
+
+
+
+
+
+
+.fb_form {
+    color:          #000000;
+    font-weight:    bold;
+}
+
+.fb_required {
+    color:          #000000;
+    font-weight:    bold;
+}
+
+.fb_required_word {
+    color:          #000000;
+    font-weight:    bold;
+}
+
+.fb_invalid {
+    color:          red;
+    font-weight:    bold;
+}
+
+.fb_message {
+    color:          red;
+    padding-left:   3pt;
+}
+
+.fb_radio {
+}
+
+.fb_checkbox {
+}
+
+.fb_option {
+}
+
+
+INPUT.readonly_text {
+    background-color: #eeeeee;
+    border:           1px solid #000000;
+}
+
+.fb_button {
+    background:     #f6f6f6;
+    color:          white;
+    font-weight:    bold;
+    padding-left:   3pt;
+    padding-right:  3pt;
+}
+
+TABLE.fb {
+    border:         1px solid #000000;
+    border-collapse: separate;
+    empty-cells:    show;
+}
+
+TD.fb_label {
+    vertical-align: top;
+    padding:        0.5em;
+    white-space:    nowrap;
+}
+
+TD.fb_field {
+    vertical-align: middle;
+    padding:        0.5em;
+    white-space:    normal;
+}
+
+TD.fb_submit {
+    padding:        0.5em;
+}
+FIELDSET.fb_set {
+    margin-top:     6pt;
+    padding:        6pt;
+    border:         1px solid #000000;
+    margin-bottom:  3pt;
+}
+

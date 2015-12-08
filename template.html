@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- 
+	Copyright (c) 2012 by Dell Inc.  
+	All rights reserved. This software may not be copied, disclosed, 
+	transferred or used except in accordance with a license granted by 
+	Dell Inc.  (http://www.dell.com) This software embodies 
+	proprietary information and trade secrets of Dell Inc.
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Charts</title>
+
+<!-- Ocarina Networks Branding (Default) -->
+
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<LINK REL="SHORTCUT ICON" HREF="images/dell/dellecomicon.ico">
+<link name="Modern" href="styles/treenav.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+$(function() {
+	// tree nav
+	// highlight selection
+	$("#treenav a.t_link").bind("click", function() {
+	  setTimeout('pleaseWait(\'Please Wait\',\'Please be patient. This may take a few seconds!\');', 3000);
+	});
+	
+	// Set initial nav-menu cookie value if not already set
+	var nmck = getCookie('nmck');
+	var nmb = {'t_1':0x1, 't_2':0x2, 't_3':0x4, 't_4':0x8, 't_5':0x10, 't_6':0x20, 't_7':0x40 };
+	//debug(~nmb.support & 0xf);
+	if(nmck == null) {
+	  setCookie('nmck',0xff,7);
+	  nmck = 0xff;
+	} 
+	  
+	$(".t_open a.t_icon").click(function() {
+	  var parent_id = $(this).parents('table').attr('id');
+	  var s_parent_id = $("#treenav tr.component-tree-selection").parents('div').attr('id'); // get selected row id
+	  
+	  if ($("#" + parent_id + "_div").css("display") == "block") {
+		  // collapse sub-menu
+		  $("#" + parent_id + " img.icon").attr("src","images/tree_nav/ctplus.png");
+		  $("#" + parent_id + " img.ct").attr("src","images/tree_nav/ctline.gif");
+		  $("#" + parent_id + "_div").slideUp(300);
+		  // if sub-menu link selected, then highlight parent when sub-menu is collapsed
+		  if((parent_id + "_div") == s_parent_id) {
+			$("#" + parent_id + " tr").addClass("component-tree-selection");
+		  }
+		  // unset value in nav menu cookie
+		  nmck = nmck & ~nmb[parent_id];
+		  setCookie('nmck', nmck, 7);
+	  } else {
+		  // expand sub-menu
+		  $("#" + parent_id + " img.icon").attr("src","images/tree_nav/ctminus.png");
+		  $("#" + parent_id + " img.ct").attr("src","images/tree_nav/ctpfork.gif");
+		  $("#" + parent_id + "_div").slideDown(300);
+		  // if sub-menu link selected, then un-highlight parent when sub-menu is expanded
+		  if((parent_id + "_div") == s_parent_id) {
+			$("#" + parent_id + " tr").removeClass("component-tree-selection");
+		  }
+		  
+		  // set value in nav menu cookie
+		  nmck =  nmck | nmb[parent_id];
+					  //console.log('expand nmck ' + nmck + ' nmb ' + nmb[parent_id] + ' parent id ' + parent_id);
+		  setCookie('nmck', nmck, 7);
+	  }
+	});
+});
+function setCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    setCookie(name,"",-1);
+}
+</script>
+<!-- include product name css -->
+<link href="styles/dr4000.css" rel="stylesheet" type="text/css" />
+</head>
+<body id="sysconfignav">
+<div id="main"> <BR>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <TR>
+      <TD><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="6" height="6"><img src="images/top-header-left-corner.png" width="6" height="6"></td>
+            <td width="100%" style="border-top: solid #b8b8b5 1px;" BGCOLOR="#ffffff" HEIGHT="5"><DIV style="height: 5px;">&nbsp;</DIV></td>
+            <td width="6" height="6"><img src="images/top-header-right-corner.png" width="6" height="6"></td>
+          </tr>
+        </table></TD>
+    </TR>
+    <tr>
+      <td style="background-color: #ffffff; border-left: solid #b8b8b5 1px; border-right: solid #b8b8b5 1px;"><div class="masthead_left"></div>
+        <div class="masthead_right">
+          <div id="logo"></div>
+          <div class="masthead_divider"></div>
+          <p class="cluster_name" style="font-size: 16pt; margin-top: 10px; margin-left: 10px; margin-bottom:5px;"> SVDC<br>
+            <blink>Reports Portal beta.</blink></p>
+          <div class="masthead_right_end"></div>
+        </div>
+        <DIV ID="ieWarn" STYLE="display:none;padding:10px;">
+          <table border="0" cellspacing="0" cellpadding="15" WIDTH="100%" class="new_table">
+            <TR>
+              <TD class="new_table_green_success" ALIGN="center"> This user interface may not work properly with your current Internet Explorer version!<BR>
+                Download the latest version <A HREF="http://www.microsoft.com/windows/Internet-explorer/default.aspx" TARGET="_blank">here</A> <BR>
+                <BR></td>
+            </tr>
+          </table>
+        </DIV></td>
+    </tr>
+    <tr>
+      <td style="border-left: solid #b8b8b5 1px; border-right: solid #b8b8b5 1px;" BGCOLOR="#ffffff" VALIGN="top"><div id="content">
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="6"><img src="images/spacer.gif" width="6" height="1" /></td>
+            <td width="186" height="6" valign="bottom"><IMG SRC="images/nav-menu-top-blk.jpg" BORDER="0" width="186" height="6"></td>
+            <td width="6"><img src="images/spacer.gif" BORDER="0" width="6" height="1"></td>
+            <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="6" height="6" ALIGN="right" valign="bottom"><img src="images/top-header-left-corner.png" BORDER="0" width="6" height="6"></td>
+                  <td style="border-top: solid #b8b8b5 1px;" BGCOLOR="#ffffff" HEIGHT="5" WIDTH="100%"><DIV style="height: 5px; font-size: 1px;"></DIV></td>
+                  <td width="6" height="6" valign="bottom"><img src="images/top-header-right-corner.png" BORDER="0" width="6" height="6"></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td width="6"><img src="images/spacer.gif" width="6" height="1" /></td>
+            <td width="186" VALIGN="top" bgcolor="#000000"><div id="treenav" width="186" style="min-height:500px;"> 
+                <!-- dashboard -->
+				
+				<table id="t_3" class="t_open" width="186">
+                  <tbody>
+                    <tr >
+                      <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                      <td><a id="t_3_expand_icon"  class="t_icon" style="cursor: pointer;"><img class="icon" name="imgp_C00" src="images/tree_nav/ctminus.png" width="15"><img class="ct" name="imgl_C00" src="images/tree_nav/ctpfork.gif" width="15"></a><a id="t_schedule_text" href="SideWinder20.html" style="cursor: pointer;" class="t_link"><b>Sidewinder 2.0</b></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div id="t_3_div" style="display: block;">
+                  <table class="" id="tbl_C02" width="186">
+                    <tbody>
+                      <tr id="" >
+                        <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                        <td style="width: 15px;" id=""><img src="images/tree_nav/blank.gif" style="width: 15px;"></td>
+                        <td><img src="images/tree_nav/ctfork.gif" width="15"><a id="" href="covsw.php" style="cursor: pointer;" class="t_link">Coverity</a></td>
+                      </tr>
+                      <tr id="" >
+                        <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                        <td style="width: 15px;" id=""><img src="images/tree_nav/blank.gif" style="width: 15px;"></td>
+                        <td><img src="images/tree_nav/ctfork.gif" alt="" width="15"><a id="" href="bugreport2.html" style="cursor: pointer;" class="t_link">Bug Reports</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+				
+				
+				
+				
+				                <!-- storage -->
+                <table id="t_2" class="t_open" width="186">
+                  <tbody>
+                    <tr >
+                      <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                      <td><a id="t_2_expand_icon"  class="t_icon" style="cursor: pointer;"><img class="icon" name="imgp_C00" src="images/tree_nav/ctminus.png" width="15"><img class="ct" name="imgl_C00" src="images/tree_nav/ctpfork.gif" width="15"></a><a id="t_storage_text" href="SideWinder11.html" style="cursor: pointer;" class="t_link"><b>Sidewinder 1.1</b></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div id="t_2_div" style="display: block;">
+                  <table class="" id="tbl_C02" width="186">
+                    <tbody>
+                      <tr id="" >
+                        <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                        <td style="width: 15px;" id=""><img src="images/tree_nav/blank.gif" style="width: 15px;"></td>
+                        <td><img src="images/tree_nav/ctfork.gif" width="15"><a id="" href="covsw11.php" style="cursor: pointer;" class="t_link">Coverity</a></td>
+                      </tr>
+                      <tr id="" >
+                        <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                        <td style="width: 15px;" id=""><img src="images/tree_nav/blank.gif" style="width: 15px;"></td>
+                        <td><img src="images/tree_nav/ctfork.gif" alt="" width="15"><a id="" href="bugreport11.html" style="cursor: pointer;" class="t_link">Bug Reports</a></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+				
+				
+				
+				
+				
+				
+				
+                <table id="t_1" class="t_open">
+                  <tbody>
+                    <tr class="component-tree-selection">
+                      <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                      <td><a id="t_1_expand_icon" class="t_icon" style="cursor: pointer;"><img class="icon" src="images/tree_nav/ctminus.png" width="15"></a><img class="ct" width="15" src="images/tree_nav/ctpfork.gif"><a id="t_dashboard_text" href="template.html" style="cursor: pointer;" class="t_link"><b>Sidewinder 1.0</b></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div id="t_1_div" style="display: block;">
+                  <table class="" id="tbl_C02" width="186">
+                    <tbody>
+                      <tr id="" >
+                        <td style="width: 5px;" id=""><img src="images/tree_nav/blank.gif" style="width: 5px;"></td>
+                        <td style="width: 15px;" id=""><img src="images/tree_nav/blank.gif" style="width: 15px;"></td>
+                        <td><img src="images/tree_nav/ctfork.gif" width="15"><a id="" href="covsw1.php" style="cursor: pointer;" class="t_link">Coverity</a></td>
+						</tr>
+					</tbody>
+                  </table>
+				  
+                </div>
+                
+
+                
+
+          
+              <br /></td>
+            <TD WIDTH="6">&nbsp;</TD>
+            <td valign="top" style="border-left: solid #b8b8b5 1px; border-right: solid #b8b8b5 1px;"><div style="padding:8px;">
+                <TABLE WIDTH="100%" CELLSPACING="0" cellpadding="0" style="border-bottom: 1px solid #b8b8b8; height:20px;padding-bottom:8px;">
+                  <TR>
+                    <TD class="page_heading" width="5%" valign="top" nowrap> Sidewinder 1.0 &nbsp;</TD>
+                    <td width="95%" align="right" valign="top"><div style="margin-top:2px;">  &nbsp; </div></td>
+                  </TR>
+			</TABLE>
+			<i>Choose a section within the project<i><br><br>
+			<center><img src="default.png" width="500" height="500"></center>
+              </div>
+              <table CELLPADDING="0" cellspacing="0" id="main_table">
+                <TR>
+                  <TD HEIGHT="7"></TD>
+                </TR>
+                <TR>
+                  <TD VALIGN="top"></td>
+                </tr>
+              </table></TD>
+            <TD WIDTH="6">&nbsp;</TD>
+          </TR>
+          <TR>
+            <td width="6"><img src="images/spacer.gif" width="1" height="1" /></td>
+            <td width="186" height="6" valign="top"><IMG SRC="images/nav-menu-bottom.png" BORDER="0" width="186" height="6"></td>
+            <td width="6" height="6" ALIGN="right" valign="top"><img src="images/spacer.gif" BORDER="0" width="6" height="6"></td>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="6" height="6" ALIGN="right" valign="top"><img src="images/bottom-footer-left-corner.png" BORDER="0" width="6" height="6"></td>
+                  <td style="border-bottom: solid #b8b8b5 1px;" BGCOLOR="#ffffff" HEIGHT="5" width="100%"><DIV style="height: 5px; font-size: 1px;"></DIV></td>
+                  <td width="100%" height="6" valign="top"><img src="images/bottom-footer-right-corner.png" BORDER="0" width="6" height="6"></td>
+                </tr>
+              </table></td>
+          </TR>
+        </TABLE></td>
+    </tr>
+    <tr>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="6" style="background-color: #ffffff; border-left: solid #b8b8b5 1px"><img src="images/spacer.gif" width="6" /></td>
+            <td width="100%" BGCOLOR="#ffffff" HEIGHT="5"></td>
+            <td width="6" ALIGN="right" valign="top" style="background-color: #ffffff; border-right: solid #b8b8b5 1px"><img src="images/spacer.gif" BORDER="0" width="6"></td>
+          </tr>
+          <tr>
+            <td width="6" style="background-color: #ffffff; border-left: solid #b8b8b5 1px"><img src="images/spacer.gif" width="6" /></td>
+            <td width="100%" BGCOLOR="#ffffff" HEIGHT="5"><DIV style="height:15px; margin:0 32px 0 3px; font-size:8pt"> <a href="http://www.dell.com/content/topics/global.aspx/policy/en/policy?c=us&l=en&s=gen&~section=003" 
+                     style="font-size:8pt; text-decoration:none; color:#000" target="_blank"> Copyright &copy; 2011 - 2012 Dell Inc.  All rights reserved. </a> </DIV></td>
+            <td width="6" ALIGN="right" valign="top" style="background-color: #ffffff; border-right: solid #b8b8b5 1px"><img src="images/spacer.gif" BORDER="0" width="6"></td>
+          </tr>
+          <tr>
+            <td width="6" height="6" style=" border-right: solid #fff 1px"><img src="images/bottom-footer-left-corner.png" width="6" height="6"></td>
+            <td width="100%" style="border-bottom: solid #b8b8b5 1px;" BGCOLOR="#ffffff" HEIGHT="5"><DIV style="height: 5px;"></DIV></td>
+            <td width="6" height="6"><img src="images/bottom-footer-right-corner.png" width="6" height="6"></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <div id="footer"> </div>
+</div>
+</body>
+</html>

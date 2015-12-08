@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* 
+ * Copyright (c) 2010 by Ocarina Networks.  
+ * All rights reserved. This software may not be copied, disclosed, 
+ * transferred or used except in accordance with a license granted by 
+ * Ocarina Networks.  (http://www.ocarinanetworks.com) This software embodies 
+ * proprietary information and trade secrets of Ocarina Networks
+ */
+DIV.masthead_left {
+	background: url('/images/dell/masthead_left.png') no-repeat left bottom;
+	height:63px;
+	float:left;
+	width:17px;
+	margin:0 0 0 6px;
+}
+DIV.masthead_right {
+	background: url('/images/dell/masthead_gradient.png') repeat-x left bottom;
+	height:63px;
+	margin:0 0 0 23px;
+	padding-right:10px;
+	position:relative;
+}
+DIV.masthead_right_end {
+	position:absolute;
+	background:url('/images/dell/masthead_right.png') no-repeat;
+	z-index:5;
+	width:680px;
+	height:63px;
+	right:0;
+	top:0;
+	margin:0;
+	padding:0;
+}
+DIV.masthead_right p.cluster_name  {
+	float:left;
+	margin:13px 20px 23px;
+	font-size:2em;
+	font-weight:bold;
+	color:#fff;
+}
+DIV#logo {
+	background: url('/images/dell/logo.png') no-repeat left center;
+	margin-top:17px;
+	float:left;
+	height:25px;
+	width:87px;
+	border:none;
+}
+DIV.masthead_divider {
+	background: url('/images/dell/masthead_divider.png') no-repeat left center;
+	width: 2px;
+	height: 36px;
+	margin-top: 8px;
+	float:left;
+}
+DIV.masthead_links {
+	position:absolute;
+	right:20px;
+	top:20px;
+	z-index:20;
+	color: #dcdbd9;
+	font-size:12px;
+}
+DIV.masthead_links a {
+	color: #dcdbd9;
+	padding: 0px 6px 0px 4px;
+	font-size:12px;
+}
+DIV.masthead_links a:hover {
+	color: #6ea0cd;
+}
+IMG.masthead_right {
+	z-index: 10;
+	position:absolute;
+	right:0px;
+	top:0px;
+}
